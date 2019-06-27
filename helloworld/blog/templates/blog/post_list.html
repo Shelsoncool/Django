@@ -1,0 +1,23 @@
+<html>
+<head>Django first test project</head>
+<style>
+    #head1{
+        align='center';
+        color='red';
+    }
+
+</style>
+<body>
+<div id="head1" style="">
+<h1>Django Launched</h1>
+<p>Django is python framework</p>
+<p1>{{posts1}}</p1>
+<h2>Data in correct format</h2>
+{% for post in posts1 %}
+    <h2><a>{{ post.title }}</a></h2>
+    <p>Published:{{ post.published_date }}</p>
+    <p>{{post.text|linebreaksbr}}</p>
+{% endfor %}
+    </div>
+</body>
+</html>
