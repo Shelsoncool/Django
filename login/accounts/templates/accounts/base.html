@@ -1,0 +1,30 @@
+{% load static %}
+<html>
+<head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+<div class="container">
+        <div class="row">
+            <div class="col-md-22">
+                    <div class="page-header">
+                        <a href="{% url 'Home' %}" class="top-menu"><span class=""><small>Home</small></span></a>
+                        <a href="{% url 'register_urls' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                        <a href="{% url 'login_urls' %}" class="top-menu"><span class="glyphicon glyphicon-minus"></span></a>
+
+                        <h1>Accounts</h1>
+                        </div>
+                                {% block content %}
+
+
+
+                                {% endblock %}
+
+            </div>
+        </div>
+</div>
+</body>
+</html>
