@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 def indexView2(request):
     return render(request,'accounts/home.html')
 
-#@login_required()
+@login_required()
 def dashboardView(request):
     return render(request,'accounts/dashboard.html')
 

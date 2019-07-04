@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <title></title>
+      <script src="https://static.anychart.com/js/8.0.1/anychart-core.min.js"></script>
+<script src="https://static.anychart.com/js/8.0.1/anychart-pie.min.js"></script>
+   <script type="text/javascript">
+   
+      anychart.onDocumentReady(function(){
+           var data = [
+               {x: "Arjun is Great", value: 1 },
+               {x: "viva la Arjun", value: 2 },
+               {x: "For Arjun", value: 3 },
+               {x: "Great Arjun", value: 4 },
+           ];
+           var chart = anychart.pie();
+           chart.title("Poplarity chart");
+           chart.data(data);
+           chart.sort("desc");
+           chart.legend().position("right");
+           chart.legend().itemsLayout("vertical");
+           chart.container('container');
+           chart.draw();
+});
+   </script>
+   <style type="text/css">
+      html, body, #container {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+   </style>
+</head>
+<body>
+<div id="container"></div>
+<p></p>
+</body>
+

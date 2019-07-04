@@ -1,0 +1,71 @@
+{% extends 'polls/base.html' %}
+{% block content %}
+<html>
+<head>
+    <style>
+        .container{
+        align:center;
+        float:right;
+        }
+    </style>
+    <script src="https://cdn.anychart.com/releases/8.6.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.6.0/js/anychart-pie.min.js"></script>
+</head>
+<body>
+<div class="container">
+<h1>{{ question.question_text }}</h1>
+
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'pollapp:detail' question.id %}">Vote again?</a>
+
+<script type="text/javascript">
+ anychart.onDocumentReady(function(){
+        // create data
+        var data1 = [
+          {x: "A", value: 637166},
+          {x: "B", value: 721630},
+          {x: "C", value: 148662},
+          {x: "D", value: 78662},
+          {x: "E", value: 90000}
+        ];
+        var data=[]
+        {% for choice in question.choice_set.all %}
+            #var data1=[x:{{ choice.choice_text }}, value: {{ choice.votes }}];
+            data.push({{ choice.votes }},{{ choice.votes }})
+        {% endfor %}
+
+        // create a chart and set the data
+        chart = anychart.pie(data);
+
+           chart.title("Poplarity chart");
+           chart.data(data);
+           chart.sort("desc");
+           chart.legend().position("right");
+           chart.legend().itemsLayout("vertical");
+
+
+        // set the container id
+        chart.container("chart");
+
+        // initiate drawing the chart
+        chart.draw();
+ });
+</script>
+<style type="text/css">
+      html, body, #chart {
+  width: 80%;
+  height: 80%;
+  margin: 0;
+  padding: 0;
+}
+   </style>
+<div id="chart"></div>
+    </div>
+</body>
+</html>
+{% endblock %}
